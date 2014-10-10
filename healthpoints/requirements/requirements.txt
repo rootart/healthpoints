@@ -1,0 +1,16 @@
+django>=1.4.3
+psycopg2
+
+south
+
+django-pagination
+django_compressor
+python-memcached
+
+pillow
+sorl-thumbnail
+
+
+python-social-auth
+geopy
+Fiona
