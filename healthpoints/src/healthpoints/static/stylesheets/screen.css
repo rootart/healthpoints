@@ -788,21 +788,21 @@ input:focus::-webkit-input-placeholder {
 .metrics-data .brick-row {
   padding: 1.25rem 0 0 0;
 }
-.metrics-data .brick-row .brick-large-9:last-child .brick-row {
+.metrics-data .brick-row .brick-large-8:last-child .brick-row {
   border-bottom: 0;
 }
-.metrics-data .brick-row .brick-large-9 .brick-row {
+.metrics-data .brick-row .brick-large-8 .brick-row {
   padding: 0 0 2rem 0;
   border-bottom: 1px solid #cccccc;
 }
-.metrics-data .brick-row .brick-large-9 .brick-columns {
+.metrics-data .brick-row .brick-large-8 .brick-columns {
   margin: 1.25rem 0;
   border-right: 1px solid #cccccc;
 }
-.metrics-data .brick-row .brick-large-9 .brick-columns:last-child {
+.metrics-data .brick-row .brick-large-8 .brick-columns:last-child {
   border-right: 0;
 }
-.metrics-data .brick-row .brick-large-9 .brick-columns:nth-child(3n) {
+.metrics-data .brick-row .brick-large-8 .brick-columns:nth-child(3n) {
   border-right: 0;
 }
 .metrics-data .data1 {
@@ -1207,6 +1207,125 @@ input:focus::-webkit-input-placeholder {
 .ribbon-content:after {
   right: 0;
   border-width: 0.5em 0.5em 0 0;
+}
+
+.support-team {
+  /*background-image:-moz-linear-gradient(top,#f4f4f4 0%,#fff 50%, #f5f6f6 73%, #fff 100%);
+  background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#f4f4f4),color-stop(50%,#fff),color-stop(73%,#f5f6f6),color-stop(100%,#fff));
+  background-image:-webkit-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  background-image:-o-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  background-image:-ms-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  background-image:linear-gradient(to bottom,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);*/
+}
+.support-team .title {
+  color: #a7a0a2;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.5;
+  position: relative;
+  text-shadow: 0 0 1px white;
+  margin: 0 0 0.5rem 0;
+}
+.support-team .typcn-group:before {
+  color: #10bbf1;
+  font-size: 2rem;
+  text-shadow: 1px 1px 1px #222222;
+  height: auto;
+  margin-right: 0.5rem;
+}
+.support-team .brick-columns {
+  padding: 0;
+}
+.support-team .item {
+  padding: 0.5rem 0.5rem;
+  background-image: -moz-linear-gradient(top, #f4f4f4 0%, white 50%, #f5f6f6 73%, white 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(50%, white), color-stop(73%, #f5f6f6), color-stop(100%, white));
+  background-image: -webkit-linear-gradient(top, #f4f4f4 0%, white 50%, #f5f6f6 73%, white 100%);
+  background-image: -o-linear-gradient(top, #f4f4f4 0%, white 50%, #f5f6f6 73%, white 100%);
+  background-image: -ms-linear-gradient(top, #f4f4f4 0%, white 50%, #f5f6f6 73%, white 100%);
+  background-image: linear-gradient(to bottom, #f4f4f4 0%, #ffffff 50%, #f5f6f6 73%, #ffffff 100%);
+}
+.support-team .item:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+  font-size: 0;
+}
+.support-team .item .brick-columns {
+  padding: 0 0 1rem 0;
+}
+.support-team .typcn-messages:before {
+  font-size: 1.3rem;
+  margin-left: 0 0 0 0.2rem;
+}
+.support-team .first-name {
+  color: #10bbf1;
+  font-weight: bold;
+  padding: 0.5rem 0 0.1rem;
+  font-size: 14px;
+  text-align: center;
+}
+.support-team .comment-title {
+  padding: 0.5rem 0 0.5rem 0;
+  font-weight: bold;
+}
+.support-team .comment-desc {
+  font-size: 13px;
+  color: #a7a0a2;
+  line-height: 1.4;
+  height: 73px;
+  overflow: hidden;
+}
+.support-team .comment-desc:after {
+  content: "...";
+}
+
+.support-team-photo {
+  display: block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin: auto;
+}
+.support-team-photo img {
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.support-team-photo .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all 0.5s linear;
+  border: 2px solid #222222;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+.support-team-photo:hover .circle {
+  border-color: transparent;
+  animation: hoorai cubic-bezier(0.18, 0.14, 0.29, 1) 1s;
+  animation-fill-mode: forwards;
+  border-right-color: #222;
+}
+
+@keyframes hoorai {
+  0% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Welcome to Compass. Use this file to write IE specific override styles.

@@ -359,7 +359,7 @@
   text-align: center;
   .brick-row {
     padding: 1.25rem 0 0 0;
-    .brick-large-9 {
+    .brick-large-8 {
       &:last-child {
         .brick-row {
           border-bottom: 0;
@@ -838,12 +838,141 @@
 	}
 
 .support-team {
-  //background-image:-moz-linear-gradient(top,#f4f4f4 0%,#fff 50%, #f5f6f6 73%, #fff 100%);
-  //background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#f4f4f4),color-stop(50%,#fff),color-stop(73%,#f5f6f6),color-stop(100%,#fff));
-  //background-image:-webkit-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
-  //background-image:-o-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
-  //background-image:-ms-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
-  //background-image:linear-gradient(to bottom,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  /*background-image:-moz-linear-gradient(top,#f4f4f4 0%,#fff 50%, #f5f6f6 73%, #fff 100%);
+  background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#f4f4f4),color-stop(50%,#fff),color-stop(73%,#f5f6f6),color-stop(100%,#fff));
+  background-image:-webkit-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  background-image:-o-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  background-image:-ms-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+  background-image:linear-gradient(to bottom,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);*/
 
   //box-shadow:0 2px 5px rgba(0,0,0,.2);
+  .title {
+    color: #a7a0a2;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.5;
+        position: relative;
+        text-shadow: 0 0 1px white;
+        margin: 0 0 .5rem 0;
+  }
+  .typcn-group {
+    &:before {
+      color: #10bbf1;
+      font-size: 2rem;
+          text-shadow: 1px 1px 1px #222222;
+          height: auto;
+              margin-right: 0.5rem;
+    }
+  }
+  .brick-columns {
+    padding: 0;
+  }
+  .item {
+    padding: .5rem .5rem;
+    //background: #ccc;
+
+    background-image:-moz-linear-gradient(top,#f4f4f4 0%,#fff 50%, #f5f6f6 73%, #fff 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#f4f4f4),color-stop(50%,#fff),color-stop(73%,#f5f6f6),color-stop(100%,#fff));
+    background-image:-webkit-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+    background-image:-o-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+    background-image:-ms-linear-gradient(top,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+    background-image:linear-gradient(to bottom,#f4f4f4 0%,#fff 50%,#f5f6f6 73%,#fff 100%);
+
+
+    &:after {
+      content: ".";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0;
+      font-size: 0;
+    }
+    .brick-columns {
+      padding: 0 0 1rem 0;
+    }
+  }
+  .typcn-messages {
+    &:before {
+      font-size: 1.3rem;
+      margin-left: 0 0 0 .2rem;
+    }
+  }
+  .first-name {
+      color: #10bbf1;
+      font-weight: bold;
+      padding: .5rem 0 0.1rem;
+      font-size: 14px;
+      text-align: center;
+  }
+  .comment-title {
+    padding: .5rem 0 .5rem 0;
+    font-weight: bold;
+  }
+  .comment-desc {
+     font-size: 13px;
+     color: #a7a0a2;
+     line-height: 1.4;
+     height: 73px;
+     overflow: hidden;
+     &:after {
+       content: '...'
+     }
+
+  }
+}
+
+.support-team-photo {
+  display: block;
+
+   position: relative;
+   width: 80px;
+   height: 80px;
+   box-sizing: border-box;
+      border-radius: 50%;
+      margin: auto;
+  img {
+       border-radius: 50%;
+       display: inline-block;
+       vertical-align: top;
+
+  }
+}
+.support-team-photo .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //border-radius: 80/1.7;
+  border-radius: 50%;
+  //background: #10bbf1;
+  transition: all .5s linear;
+  border: 2px solid #222;
+  backface-visibility: hidden;
+   box-sizing: border-box;
+}
+
+.support-team-photo:hover .circle {
+  border-color: transparent;
+  //background: #fff;
+  animation: hoorai cubic-bezier(.18, .14, .29, 1) 1s;
+  animation-fill-mode: forwards;
+  border-right-color: #222;
+}
+
+
+// Animation
+@keyframes hoorai {
+  0% {
+    transform: rotate(-90deg);
+    //opacity: 1.0;
+  }
+ 50% {
+    //opacity: 1.0;
+  }
+100% {
+    transform: rotate(360deg);
+    //opacity: 0.0;
+  }
 }
