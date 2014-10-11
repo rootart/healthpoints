@@ -1,0 +1,20 @@
+{
+  "name": "design",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rootart/healthpoints",
+  "authors": [
+    "Julia Scherbina <julia.shcherbina@djangostars.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jqueryui": "~1.11.1",
+    "typicons.font": "git://github.com/stephenhutchings/typicons.font.git#~2.0.6"
+  }
+}
