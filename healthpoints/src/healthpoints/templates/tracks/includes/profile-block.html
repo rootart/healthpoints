@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+  <h2 class="ribbon"><span class="ribbon-content">{% trans "Your profile" %}</span></h2>
+    <a href="javascript:;" class="main-image">
+      <img src="{{ picture }}" alt="">
+      <div class="first-name">{{ user.get_full_name }}</div>
+      <div class="location"></div>
+    </a>
+</div>

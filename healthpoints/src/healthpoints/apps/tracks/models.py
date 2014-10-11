@@ -1,4 +1,6 @@
 from django.contrib.gis.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -9,6 +11,7 @@ import timedelta
 import json
 
 import facebook
+from social.apps.django_app.default.models import UserSocialAuth
 
 from tracks.polyline import encode_coords
 
@@ -124,30 +127,37 @@ class Activity(models.Model):
     def comments(self):
         return self.activityfbactions_set.filter(activity_type=ActivityFBActions.COMMENT)
 
+    @property
+    def formated_distance(self):
+        '''
+        :return: Formated distance in KM
+        '''
+        return D(m=self.distance).km
+
 
     @classmethod
     def user_stats(cls, user):
         activities = cls.objects.filter(user=user)
-        total_distance = D(m=activities.aggregate(total_distance = Sum('distance'))['total_distance']).km
+        total_distance = D(m=activities.aggregate(total_distance = Sum('distance'))['total_distance'] or 0).km
         total_elevation_gain_distance = D(
-            m=activities.aggregate(total_elevation_gain=Sum('total_elevation_gain'))['total_elevation_gain']
+            m=activities.aggregate(total_elevation_gain=Sum('total_elevation_gain'))['total_elevation_gain'] or 0
         ).km
 
         total_calories = activities.aggregate(total_calories=Sum('calories'))['total_calories']
         total_moving_time = activities.aggregate(total_moving_time=Sum('moving_time'))['total_moving_time']
+        total_likes = ActivityFBActions.objects.filter(
+            activity__user=user,
+            activity_type=ActivityFBActions.LIKE
+            ).count()
 
         return {
             'total_distance': total_distance,
             'total_activities': activities.count(),
             'elevation_gain': total_elevation_gain_distance,
             'total_moving_time': total_moving_time,
-            'total_calories': total_calories
+            'total_calories': total_calories,
+            'total_likes': total_likes
         }
-
-
-
-
-
 
 
 
@@ -173,4 +183,11 @@ class ActivityFBActions(models.Model):
     comment = models.TextField(blank=True, null=True)
 
 
-
+@receiver(post_save, sender=UserSocialAuth)
+def create_profile_for_user(sender, instance, created, **kwargs):
+    """
+    Fetch strava data after receiving strava token
+    """
+    from tracks.tasks import load_strava_data
+    if instance.provider == 'strava':
+        load_strava_data.delay(instance.user.id)

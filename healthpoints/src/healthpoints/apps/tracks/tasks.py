@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.gis.geos import Point, LineString
 
 from celery import task
+from celery.schedules import crontab
 
 from stravalib import Client as StravaClient
 from stravalib import unithelper
@@ -63,7 +64,9 @@ def load_strava_data(user_id):
 
 
 
-@task
+@task.periodic_task(
+    run_every=crontab(minute="*/15")
+)
 def update_fb_actions():
 
     activities = Activity.objects.filter(

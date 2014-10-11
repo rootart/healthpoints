@@ -1,4 +1,4 @@
-{% load staticfiles i18n %}
+{% load staticfiles i18n %}{% load tracks_tags %}
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -106,6 +106,7 @@
       </div>
     </section>
 
+ {% if request.user.is_authenticated %}
     <section class="strava">
       <div class="brick-row">
         <div class="panel-box">
@@ -114,7 +115,7 @@
           <div class="brick-large-12 brick-medium-12 brick-small-12 brick-columns">
             <div class="btn-wrapper">
               <a href="{% url 'social:begin' "strava" %}" class="btn-strava">
-                {% trans "syns data from strava" %}
+                {% trans "sync your data from strava" %}
               </a>
             </div>
           </div>
@@ -123,7 +124,8 @@
         </div>
       </div>
     </section>
-
+ {% endif %}
+ {% if not request.user.is_authenticated %}
     <section class="goals">
       <div class="brick-row">
         <div class="panel-box">
@@ -164,20 +166,13 @@
         </div>
       </div>
     </section>
-
+ {% endif %}
+{% if request.user.is_authenticated %}
     <section class="metrics">
       <div class="brick-row">
         <div class="panel-box">
           <div class="brick-row">
-
-            <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
-              <h2 class="ribbon"><span class="ribbon-content">Your profile</span></h2>
-                <a href="#" class="main-image">
-                  <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c4.0.100.100/p100x100/10610952_850591471632060_4442986756829362446_n.jpg?oh=0a86b01970885aab6581d60219be2a84&oe=54B8BDF5&__gda__=1425351266_0049509a0a53baf40f351633679c4774" alt="">
-                  <div class="first-name">Name</div>
-                  <div class="location"><span class="typcn typcn-location"></span>Location</div>
-                </a>
-            </div>
+            {% render_profile_block request.user %}
             <div class="metrics-data">
                 <div class="brick-row">
                       <div class="brick-large-8 brick-medium-8 brick-small-12 brick-columns">
@@ -206,6 +201,10 @@
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
                             <div class="data1">{{ stats.total_moving_time }}</div>
                             <div class="data2">{% trans "moving time" %}</div>
+                          </div>
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">{{ stats.total_likes }}</div>
+                            <div class="data2">{% trans "likes" %}</div>
                           </div>
                           <!--<div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">-->
                             <!--<div class="data1">123 km</div>-->
@@ -294,7 +293,7 @@
                 </div>
                 <div class="brick-large-2 brick-medium-2 brick-small-2 brick-columns">
                     <div class="distance">
-                       {{ activity.distance }}
+                       {{ activity.formated_distance|floatformat:"2" }} {% trans "km" %}
                      </div>
                 </div>
                 <div class="brick-large-2 brick-medium-2 brick-small-2 brick-columns">
@@ -484,6 +483,9 @@
           </div>
       </div>
     </div>-->
+
+{% endif %}
+
 
    </div>
 

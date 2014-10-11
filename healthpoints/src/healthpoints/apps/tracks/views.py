@@ -12,13 +12,15 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data()
         user = self.request.user
+        activities = []
         if self.request.user.is_authenticated():
             activities = Activity.objects.filter(
                 user=user
             ).select_related('activityfbactions')
+            context['stats'] = Activity.user_stats(self.request.user)
         context['activities'] = activities
 
-        context['stats'] = Activity.user_stats(self.request.user)
+
         return context
 
 

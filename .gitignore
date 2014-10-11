@@ -19,4 +19,5 @@ healthpoints/public/static
 healthpoints/public/media
 healthpoints/logs
 .sass-cache/
+celerybeat-schedule
 
