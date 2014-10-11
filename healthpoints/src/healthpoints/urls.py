@@ -5,8 +5,11 @@ from django.views.generic import TemplateView
 
 admin.autodiscover()
 
+from tracks.views import MainView
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
+    url('^$', MainView.as_view(), name='main'),
     url('', include('social.apps.django_app.urls', namespace='social')),
 )
 

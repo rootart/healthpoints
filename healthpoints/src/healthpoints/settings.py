@@ -154,6 +154,8 @@ MAPBOX_API_TOKEN = ''
 MAPBOX_MAP_ID = ''
 
 
+LOGIN_REDIRECT_URL = '/'
+
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 try:

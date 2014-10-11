@@ -1,10 +1,498 @@
-<!DOCTYPE html>
+{% load staticfiles i18n %}
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>HealthPoint</title>
+    <meta name="description" content="Running">
+    <meta name="keywords" content="run, health">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/touch/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/touch/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/touch/apple-touch-icon-144x144.png">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+
+    <link rel="stylesheet" href="{% static "stylesheets/normalize.css" %}">
+    <link rel="stylesheet" href="{% static "stylesheets/screen.css" %}">
+
+    <link rel="stylesheet" href="{% static "bower_components/jqueryui/themes/sunny/jquery-ui.css" %}">
+    <link rel="stylesheet" href="{% static "bower_components/typicons.font/src/font/typicons.css" %}">
+
+    <!--[if lt IE 9]>
+        <script src="{% static "js/html5.js" %}"></script>
+        <script src="{% static "js/respond.js" %}"></script>
+    <![endif]-->
+</head>
+<body class="no-js">
+  <div class="main">
+
+    <!--<header>
+      <div class="wrap">
+        test
+      </div>
+    </header>-->
+
+    <!--<div class="spanning">
+      <div class="promo clearfix">
+        <div class="wrap">
+          test
+        </div>
+      </div>
+    </div>-->
+
+    <!--<header class="main-headder">
+      <div class="brick-row">
+        <div class="panel-box">
+          <div class="brick-large-12 brick-medium-12 brick-small-12 brick-columns">
+            <h1 class="main-title">Transform likes TO health</h1>
+          </div>
+        </div>
+      </div>
+    </header>-->
+
+    <section class="promo">
+      <div class="brick-row">
+        <div class="panel-box">
+          <div class="brick-large-12 brick-medium-12 brick-small-12 brick-columns">
+            <div class="brick-row">
+              <div class="brick-large-8 brick-medium-8 brick-small-8 brick-columns">
+                <h2 class="main-title">
+                  <span>Transform</span> likes to
+                  <span>health</span>
+                </h2>
+                <div><h3 class="sub-title">some text some text </h3></div>
+                <h4 class="title">some text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, maxime, expedita, libero tempore recusandae et .</h4>
+
+                {% if not request.user.is_authenticated %}
+                  <div class="btn-wrapper">
+                    <a href="{% url 'social:begin' "facebook" %}" class="btn">
+                      <span class="typcn typcn-social-facebook"></span>
+                      {% trans "login facebook" %}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strava">
+      <div class="brick-row">
+        <div class="panel-box">
+
+          <div class="brick-large-12 brick-medium-12 brick-small-12 brick-columns">
+            <div class="text">
+              text
+            </div>
+            <div class="btn-wrapper">
+              <a href="{% url 'social:begin' "strava" %}" class="btn-strava">
+                {% trans "syns data from strava" %}
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="goals">
+      <div class="brick-row">
+        <div class="panel-box">
+
+          <div class="brick-row">
+              <div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+                <div class="icon-title"><span class="typcn typcn-location-outline"></span></div>
+                <h5 class="title">
+                  Places
+                </h5>
+                <p class="desc">Seamlessly empower fully researched growth strategies and interoperable internal sources.</p>
+              </div>
+              <div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+                <div class="icon-title"><span class="typcn typcn-heart-outline"></span></div>
+                <h5 class="title">
+                  health
+                </h5>
+                <p class="desc">test </p>
+              </div>
+              <div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+                <div class="icon-title"><span class="typcn typcn-flag-outline"></span></div>
+                <h5 class="title">
+                 easy
+                </h5>
+                <p class="desc">test</p>
+              </div>
+              <div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+                <div class="icon-title"><span class="typcn typcn-world"></span></div>
+                <h5 class="title">
+                 global
+                </h5>
+                <p class="desc">test</p>
+              </div>
+          </div>
+
+          <div class="brick-row">
+            <div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+              <div class="icon-title"><span class="typcn typcn-arrow-forward"></span></div>
+              <h5 class="title">
+               share
+              </h5>
+              <p class="desc">test</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="brick-row">
+        <div class="panel-box">
+          <div class="brick-row">
+
+            <div class="brick-large-3 brick-medium-3 brick-small-12 brick-columns">
+                <a href="#" class="main-image">
+                  <img src="upload/vasyl.png" alt="">
+                  <div class="first-name">Name</div>
+                  <div class="location">Location</div>
+                </a>
+            </div>
+            <div class="metrics-data">
+                <div class="brick-row">
+                      <div class="brick-large-9 brick-medium-9 brick-small-12 brick-columns">
+                        <div class="health-point">
+
+                          <h3 class="title">Your Health points is</h3>
+                          <span class="num">199</span>
+                            <span class="typcn typcn-heart-outline"></span>
+                          <!--<span class="typcn typcn-heart-full-outline"></span> -->
+                        </div>
+                        <div class="brick-row">
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">123 km</div>
+                            <div class="data2">some distance</div>
+                          </div>
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">1 km</div>
+                            <div class="data2">some</div>
+                          </div>
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">123 km</div>
+                            <div class="data2">some distance</div>
+                          </div>
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">123 km</div>
+                            <div class="data2">some distance</div>
+                          </div>
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">1 km</div>
+                            <div class="data2">some</div>
+                          </div>
+                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
+                            <div class="data1">123 km</div>
+                            <div class="data2">some distance</div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="list-evernote">
+      <div class="brick-row">
+        <div class="panel-box">
+          <div class="brick-row">
+
+            <div class="item">
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="name">
+                      <span class="typcn typcn-location"></span>
+                      Zürich Marathon
+                    </div>
+                </div>
+                <div class="brick-large-2 brick-medium-2 brick-small-2 brick-columns">
+                    <div class="distance">
+                       42.195 km
+                     </div>
+                </div>
+                <div class="brick-large-2 brick-medium-2 brick-small-2 brick-columns">
+                  <div class="data">
+                    10.10.2014
+                  </div>
+                </div>
+                <div class="brick-large-5 brick-medium-5 brick-small-12 brick-columns">
+                  <div class="num-likes">
+                    <!--<span>likes</span>-->
+                    <span class="typcn typcn-heart-full-outline"></span>
+                    <span class="num">7</span>
+                  </div>
+                  <div class="num-comments">
+                    <!--<span>comments</span>-->
+                    <span class="typcn typcn-message"></span>
+                    <span class="num">156</span>
+                  </div>
+                  <a href="#" class="btn-f"><span class="typcn typcn-social-facebook"></span></a>
+                  <a href="#" class="btn-ev"></a>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="name">
+                      <span class="typcn typcn-location"></span>
+                      Zürich Marathon
+                    </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="distance">
+                       42.195 km
+                     </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                  <div class="data">
+                    10.10.2014
+                  </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <a href="#" class="btn-evernote">Evernote</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="name">
+                      <span class="typcn typcn-location"></span>
+                      Kiyv Marathon
+                    </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="distance">
+                       42.195 km
+                     </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                  <div class="data">
+                    09.10.2014
+                  </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <a href="#" class="btn-evernote">Evernote</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="name">
+                      <span class="typcn typcn-location"></span>
+                      Rome Marathon
+                    </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <div class="distance">
+                       42.195 km
+                     </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                  <div class="data">
+                    10.10.2014
+                  </div>
+                </div>
+                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
+                    <a href="#" class="btn-evernote">Evernote</a>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--<section class="promo">
+      <div class="brick-row">
+        <div class="panel-box">
+          <div class="brick-row">
+            <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <a href="#" class="main-image">
+                  <img src="" alt="">
+                  <div class="first-name">Name</div>
+                  <div class="second-name">Second Name</div>
+                </a>
+            </div>
+            <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+              <div class="">
+                <button class="login">
+                  login faceebook
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>-->
+
+    <section class="profile">
+      <div class="brick-row">
+        <div class="panel-box">
+          <form action="../../../../design" class="profile-form">
+            <div class="brick-large-12 brick-medium-12 brick-small-12 brick-columns">
+              <div class="level field">
+                <h2 class="sub-title">Your running level</h2>
+                <h3 class="sub-title">How many day per week are you running?</h3>
+                <div class="slider-level-wrap">
+                  <div id="slider-level">
+                    <div class="steps">
+                      <span class="step1">1 Day</span>
+                      <span class="step2">2 Day</span>
+                      <span class="step3">3 Days</span>
+                      <span class="step4">4 Days</span>
+                      <span class="step5">5 Days</span>
+                      <span class="step6">6 Days</span>
+                      <span class="step7">7 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--2 columns-->
+            <div class="brick-row">
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="field">
+                  <input type="text" placeholder="How many distance of 5km you finished?" class="input-field">
+                  <div class="label-field">5km</div>
+                </div>
+              </div>
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="field">
+                  <input type="text" placeholder="10km" class="input-field">
+                  <div class="label-field">10km</div>
+                </div>
+              </div>
+            </div>
+            <div class="brick-row">
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="field">
+                  <input type="text" placeholder="21km" class="input-field">
+                  <div class="label-field">21km</div>
+                </div>
+              </div>
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="field">
+                  <input type="text" placeholder="Marathon" class="input-field">
+                  <div class="label-field">Marathon</div>
+                </div>
+              </div>
+            </div>
+            <div class="brick-large-12 brick-medium-12 brick-small-12 brick-columns">
+              <div class="field button-wrap">
+                <input type="submit" value="save" class="btn btn-save">
+              </div>
+            </div>
+            <!--2 columns-->
+          </form>
+            <!--<div class="brick-row">
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="main-form">
+                  <form action="./">
+                    <div class="field">
+                      <div class="label">Level</div>
+                    </div>
+                    <div class="field">
+                      <div class="brick-row">
+                        <div class="brick-large-6 brick-medium-6 brick-small-6 brick-columns">
+                          <label for="">marathons</label>
+                        </div>
+                        <div class="brick-large-6 brick-medium-6 brick-small-6 brick-columns">
+                         <input type="text" placeholder="marathons" class="input-field">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="">half</label>
+                      <input type="text" placeholder="marathons"></input>
+                    </div>
+                    <div class="field">
+                      <label for="">10km</label>
+                      <input type="text" placeholder="marathons"></input>
+                    </div>
+                    <div class="field">
+                      <label for="">5km</label>
+                      <input type="text" placeholder="marathons"></input>
+                    </div>
+                    <input type="submit" value="save" class="btn btn-save">
+                  </form>
+                </div>
+              </div>
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="test">rrr</div>
+              </div>
+            </div>-->
+        </div>
+      </div>
+    </section>
+
+    <!--<section class="promo1">
+      <div class="brick-row">
+        <div class="panel-box">
+            <div class="brick-row">
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="test">rr</div>
+              </div>
+              <div class="brick-large-6 brick-medium-6 brick-small-12 brick-columns">
+                <div class="test">rrr</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>-->
+
+    <!--<section class="promo2">
+      <div class="brick-row">
+        <div class="panel-box">
+            <div class="brick-row">
+              <div class="brick-large-4 brick-medium-8 brick-small-12 brick-columns">
+                <div class="test">rr</div>
+              </div>
+              <div class="brick-large-4 brick-medium-8 brick-small-12 brick-columns">
+                <div class="test">rr</div>
+              </div>
+              <div class="brick-large-4 brick-medium-8 brick-small-12 brick-columns">
+                <div class="test">rrr</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>-->
+
+    <!--<div class="spanning">
+      <div class="promo3">
+        <div class="brick-row">
+          <div class="panel-box">
+            <div class="brick-large-12 brick-medium-12 brick-small-12">
+              fdgfsdgd
+            </div>
+          </div>
+      </div>
+    </div>-->
+
+   </div>
+
+   <script src="{% static "bower_components/jquery/dist/jquery.js" %}"></script>
+   <script src="{% static "bower_components/jqueryui/jquery-ui.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+</body>
