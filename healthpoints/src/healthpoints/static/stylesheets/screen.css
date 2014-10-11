@@ -552,7 +552,7 @@ input:focus::-webkit-input-placeholder {
   width: 70%;
 }
 .promo .btn-wrapper {
-  padding: 2rem 0 0.5rem;
+  padding: 3rem 0 0.5rem;
 }
 .promo .btn {
   padding: 10px 45px;
@@ -758,6 +758,14 @@ input:focus::-webkit-input-placeholder {
   border: 1px solid #a7a0a2;
   max-width: 160px;
 }
+.metrics .main-image .typcn-location:before {
+  color: #20c05c;
+  font-size: 1.35rem;
+  text-shadow: 1px 1px 1px #222222;
+}
+.metrics .main-image .typcn-location:hover:before {
+  color: #24d665;
+}
 .metrics .first-name {
   padding: 0 0 0.5rem 0;
   font-weight: bold;
@@ -777,7 +785,6 @@ input:focus::-webkit-input-placeholder {
 }
 .metrics-data .brick-row .brick-large-9 .brick-row {
   padding: 0 0 2rem 0;
-  margin: 0 0 2rem 0;
   border-bottom: 1px solid #cccccc;
 }
 .metrics-data .brick-row .brick-large-9 .brick-columns {
@@ -865,6 +872,7 @@ input:focus::-webkit-input-placeholder {
 .list-evernote .typcn-location:before {
   color: #20c05c;
   font-size: 1.35rem;
+  text-shadow: 1px 1px 1px #222222;
 }
 .list-evernote .typcn-location:hover:before {
   color: #24d665;
@@ -893,7 +901,7 @@ input:focus::-webkit-input-placeholder {
   color: #a7a0a2;
   font-size: 1.35rem;
   height: auto;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 1px #dddddd;
 }
 .list-evernote .num-comments .num {
   font-weight: bold;
