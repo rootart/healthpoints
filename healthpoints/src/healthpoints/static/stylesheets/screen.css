@@ -519,6 +519,10 @@ input:focus::-webkit-input-placeholder {
   text-transform: uppercase;
   font-family: 'AvenirHeavy';
 }
+.promo .main-title em {
+  color: #3b5998;
+  text-shadow: 0px 0px 2px white;
+}
 .promo .main-subtitle {
   color: #fff;
   display: inline-block;
@@ -855,11 +859,11 @@ input:focus::-webkit-input-placeholder {
   position: absolute;
   content: '';
   left: 0;
-  top: 5px;
+  top: 7px;
   content: 0;
   border-top: 12px solid rgba(0, 0, 0, 0);
   border-bottom: 12px solid rgba(0, 0, 0, 0);
-  border-left: 19px solid #10bbf1;
+  border-left: 18px solid #10bbf1;
   transform: scale(1.01, 1.01);
 }
 .list-evernote .item {
