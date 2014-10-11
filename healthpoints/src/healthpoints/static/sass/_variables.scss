@@ -9,7 +9,8 @@ $primary: #000000;
 $secondary: #000000;
 $text: #222222;
 
-$link: #10bbf1;
+//$link: #10bbf1;
+$link: #000;
 $linkHover: lighten($link, 10%);
 $linkActive: darken($link, 10%);
 
