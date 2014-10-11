@@ -1,11 +1,22 @@
 from django.contrib.gis import admin
 
 
-from .models import Activity
+from .models import Activity, ActivityFBActions
+
+
+class ActivityFBActionAdminInline(admin.StackedInline):
+    model = ActivityFBActions
+
 
 class ActivityAdmin(admin.GeoModelAdmin):
-    pass
+    list_display = ('__unicode__', 'fb_id')
+    inlines = [ActivityFBActionAdminInline,]
+
+
+class ActivityFBActionAdmin(admin.ModelAdmin):
+    list_display = ('activity_type', 'activity')
 
 
 admin.site.register(Activity, ActivityAdmin)
+admin.site.register(ActivityFBActions, ActivityFBActionAdmin)
 

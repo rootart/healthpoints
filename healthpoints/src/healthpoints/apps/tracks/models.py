@@ -1,11 +1,15 @@
 from django.contrib.gis.db import models
+from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
 import timedelta
 import json
 
+import facebook
+
 from tracks.polyline import encode_coords
+
 
 class Activity(models.Model):
 
@@ -37,8 +41,21 @@ class Activity(models.Model):
     shard_id = models.CharField(max_length=255, blank=True, null=True)
     note_id = models.CharField(max_length=255, blank=True, null=True)
 
+    # fb id
+    fb_id = models.CharField(max_length=255, db_index=True, blank=True, null=True)
+
     def __unicode__(self):
         return self.guID
+
+    @property
+    def location(self):
+        return u"{}, {}".format(self.location_city, self.location_country)
+
+    @property
+    def metrics_msg(self):
+        return u"{}m, in {}, with {}m of elevation gain".format(
+            self.distance, self.moving_time, self.total_elevation_gain
+        )
 
     def get_mapbox_static_image(self):
         '''
@@ -55,7 +72,7 @@ class Activity(models.Model):
             return None
 
         # simplify geometry
-        coords = self.route.simplify(0.0001).coords
+        coords = self.route.simplify(0.0001).coords[0:60]
 
         # styling gejson
 
@@ -74,5 +91,51 @@ class Activity(models.Model):
 
         }
         return url
+
+    def fb_post_activity(self):
+        '''
+        Post FB activity
+        :return: FB object GUID 865772796780594_866207356737138
+        '''
+        token = self.user.social_auth.get(provider='facebook').tokens
+
+        api = facebook.GraphAPI(token)
+
+
+        resp = api.put_wall_post(
+            self.metrics_msg,
+            attachment={
+                'caption': self.location,
+                'picture': self.get_mapbox_static_image()
+            }
+        )
+
+        self.fb_id = resp['id']
+        self.save()
+        return self.fb_id
+
+
+
+class ActivityFBActions(models.Model):
+    LIKE = 'like'
+    COMMENT = 'comment'
+    ACTIVITY_CHOICES = (
+        (LIKE, "Like"),
+        (COMMENT, "Comment")
+    )
+    activity = models.ForeignKey('tracks.Activity')
+    activity_type = models.CharField(choices=ACTIVITY_CHOICES,
+                                     max_length=100,
+                                     db_index=True
+    )
+    fb_id = models.CharField(
+        max_length=255,blank=True,
+        null=True, db_index=True
+    )
+    username = models.CharField(blank=True, null=True, max_length=255)
+    user_fb_id = models.CharField(max_length=255, blank=True, null=True)
+    user_picture_url = models.CharField(max_length=500, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+
 
 
