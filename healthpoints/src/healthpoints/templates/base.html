@@ -173,7 +173,7 @@
             <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
               <h2 class="ribbon"><span class="ribbon-content">Your profile</span></h2>
                 <a href="#" class="main-image">
-                  <img src="upload/vasyl.png" alt="">
+                  <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c4.0.100.100/p100x100/10610952_850591471632060_4442986756829362446_n.jpg?oh=0a86b01970885aab6581d60219be2a84&oe=54B8BDF5&__gda__=1425351266_0049509a0a53baf40f351633679c4774" alt="">
                   <div class="first-name">Name</div>
                   <div class="location"><span class="typcn typcn-location"></span>Location</div>
                 </a>
@@ -188,29 +188,29 @@
                         </div>
                         <div class="brick-row">
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">123 km</div>
-                            <div class="data2">some distance</div>
+                            <div class="data1">{{ stats.total_distance|floatformat:"0" }} {% trans "km" %}</div>
+                            <div class="data2">{% trans "total distance" %}</div>
                           </div>
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">1 km</div>
-                            <div class="data2">some</div>
+                            <div class="data1">{{ stats.total_activities }}</div>
+                            <div class="data2">{% trans "total activities" %}</div>
                           </div>
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">123 km</div>
-                            <div class="data2">some distance</div>
+                            <div class="data1">{{ stats.elevation_gain|floatformat:"0" }} {% trans "km" %}</div>
+                            <div class="data2">{% trans "elevation gain" %}</div>
                           </div>
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">123 km</div>
-                            <div class="data2">some distance</div>
+                            <div class="data1">{{ stats.total_calories|default:"N/A" }} {% trans "cal" %}</div>
+                            <div class="data2">{% trans "calories" %}</div>
                           </div>
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">1 km</div>
-                            <div class="data2">some</div>
+                            <div class="data1">{{ stats.total_moving_time }}</div>
+                            <div class="data2">{% trans "moving time" %}</div>
                           </div>
-                          <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">123 km</div>
-                            <div class="data2">some distance</div>
-                          </div>
+                          <!--<div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">-->
+                            <!--<div class="data1">123 km</div>-->
+                            <!--<div class="data2">some distance</div>-->
+                          <!--</div>-->
                         </div>
                       </div>
                 </div>
@@ -283,34 +283,35 @@
       <div class="brick-row">
         <div class="panel-box">
           <div class="brick-row">
-            <h3 class="title">Your running activity </h3>
-            <div class="item">
+            <h3 class="title">{% trans "Your running activity" %}</h3>
+            {% for activity in activities %}
+             <div class="item">
                 <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
                     <div class="name">
                       <span class="typcn typcn-location"></span>
-                      Zürich Marathon
+                      {{ activity.location }}
                     </div>
                 </div>
                 <div class="brick-large-2 brick-medium-2 brick-small-2 brick-columns">
                     <div class="distance">
-                       42.195 km
+                       {{ activity.distance }}
                      </div>
                 </div>
                 <div class="brick-large-2 brick-medium-2 brick-small-2 brick-columns">
                   <div class="data">
-                    10.10.2014
+                    {{ activity.start_date }}
                   </div>
                 </div>
                 <div class="brick-large-5 brick-medium-5 brick-small-12 brick-columns">
                   <div class="num-likes">
                     <!--<span>likes</span>-->
                     <span class="typcn typcn-heart-full-outline"></span>
-                    <span class="num">7</span>
+                    <span class="num">{{ activity.likes.count }}</span>
                   </div>
                   <div class="num-comments">
                     <!--<span>comments</span>-->
                     <span class="typcn typcn-message"></span>
-                    <span class="num">156</span>
+                    <span class="num">{{ activity.comments.count }}</span>
                   </div>
                   <a href="#" class="btn-f"><span class="typcn typcn-social-facebook"></span></a>
                   <a href="#" class="btn-ev"></a>
@@ -330,72 +331,8 @@
                   </a>
                 </div>
             </div>
+            {% endfor %}
 
-            <div class="item">
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <div class="name">
-                      <span class="typcn typcn-location"></span>
-                      Zürich Marathon
-                    </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <div class="distance">
-                       42.195 km
-                     </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                  <div class="data">
-                    10.10.2014
-                  </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <a href="#" class="btn-evernote">Evernote</a>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <div class="name">
-                      <span class="typcn typcn-location"></span>
-                      Kiyv Marathon
-                    </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <div class="distance">
-                       42.195 km
-                     </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                  <div class="data">
-                    09.10.2014
-                  </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <a href="#" class="btn-evernote">Evernote</a>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <div class="name">
-                      <span class="typcn typcn-location"></span>
-                      Rome Marathon
-                    </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <div class="distance">
-                       42.195 km
-                     </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                  <div class="data">
-                    10.10.2014
-                  </div>
-                </div>
-                <div class="brick-large-3 brick-medium-3 brick-small-3 brick-columns">
-                    <a href="#" class="btn-evernote">Evernote</a>
-                </div>
-            </div>
 
           </div>
         </div>

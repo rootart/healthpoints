@@ -2,6 +2,8 @@ from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from django.contrib.gis.measure import D
+from django.db.models import Count, Min, Sum, Avg
 
 import timedelta
 import json
@@ -113,6 +115,39 @@ class Activity(models.Model):
         self.fb_id = resp['id']
         self.save()
         return self.fb_id
+
+    @property
+    def likes(self):
+        return self.activityfbactions_set.filter(activity_type=ActivityFBActions.LIKE)
+
+    @property
+    def comments(self):
+        return self.activityfbactions_set.filter(activity_type=ActivityFBActions.COMMENT)
+
+
+    @classmethod
+    def user_stats(cls, user):
+        activities = cls.objects.filter(user=user)
+        total_distance = D(m=activities.aggregate(total_distance = Sum('distance'))['total_distance']).km
+        total_elevation_gain_distance = D(
+            m=activities.aggregate(total_elevation_gain=Sum('total_elevation_gain'))['total_elevation_gain']
+        ).km
+
+        total_calories = activities.aggregate(total_calories=Sum('calories'))['total_calories']
+        total_moving_time = activities.aggregate(total_moving_time=Sum('moving_time'))['total_moving_time']
+
+        return {
+            'total_distance': total_distance,
+            'total_activities': activities.count(),
+            'elevation_gain': total_elevation_gain_distance,
+            'total_moving_time': total_moving_time,
+            'total_calories': total_calories
+        }
+
+
+
+
+
 
 
 
