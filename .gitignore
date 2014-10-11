@@ -18,5 +18,5 @@ healthpoints/src/healthpoints/settings_local.py
 healthpoints/public/static
 healthpoints/public/media
 healthpoints/logs
-
+.sass-cache/
 
