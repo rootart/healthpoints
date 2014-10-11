@@ -1034,15 +1034,23 @@ input:focus::-webkit-input-placeholder {
 .goals {
   padding: 2.5rem 0;
   text-align: center;
+  /*.typcn-location-outline  {
+    &:before {
+      color:#20c05c;
+
+    }
+  }
+  .typcn-heart-outline {
+    &:before {
+      color: rgb(224, 57, 62);
+
+    }
+  }*/
 }
 .goals .typcn:before {
   font-size: 2rem;
-}
-.goals .typcn-location-outline:before {
-  color: #20c05c;
-}
-.goals .typcn-heart-outline:before {
-  color: #e0393e;
+  text-shadow: 1px 1px 1px #222222;
+  color: #a7a0a2;
 }
 .goals .title {
   display: inline-block;

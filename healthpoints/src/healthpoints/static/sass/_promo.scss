@@ -649,19 +649,23 @@
   .typcn {
     &:before {
       font-size: 2rem;
+      text-shadow: 1px 1px 1px #222;
       //font-weight: bold;
+      color: #a7a0a2;
     }
   }
-  .typcn-location-outline  {
+  /*.typcn-location-outline  {
     &:before {
       color:#20c05c;
+
     }
   }
   .typcn-heart-outline {
     &:before {
       color: rgb(224, 57, 62);
+
     }
-  }
+  }*/
   .title {
     display: inline-block;
     vertical-align: middle;
