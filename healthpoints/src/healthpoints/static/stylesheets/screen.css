@@ -495,18 +495,6 @@ input:focus::-webkit-input-placeholder {
     width: 100%;
   }
 }
-.main-headder {
-  background: #fff;
-}
-.main-headder .main-title {
-  font-family: "AvenirHeavy",'Helvetica',Arial,sans-serif;
-  font-size: 36px;
-  text-align: center;
-  padding: 0 0 2.5rem 0;
-  text-transform: uppercase;
-  color: #a7a0a2;
-}
-
 .promo {
   background: url("../upload/nogibogi-3506-blur.jpg") no-repeat scroll 50% 50%/cover white;
   height: 485px;
@@ -515,15 +503,33 @@ input:focus::-webkit-input-placeholder {
   text-align: left;
 }
 .promo .main-title {
-  margin: 1rem 0 1rem 0;
+  display: inline-block;
+  vertical-align: top;
   font-size: 60px;
   font-weight: 500;
   line-height: 60px;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
+  padding: 0 1rem 0 1rem;
+  color: #fff;
   /*div {
     text-align: right;
   }*/
 }
 .promo .main-title span {
+  text-transform: uppercase;
+  font-family: 'AvenirHeavy';
+}
+.promo .main-subtitle {
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 60px;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
+  padding: 0 1rem 0 1rem;
+}
+.promo .main-subtitle span {
   text-transform: uppercase;
   font-family: 'AvenirHeavy';
 }
@@ -543,10 +549,10 @@ input:focus::-webkit-input-placeholder {
   display: inline-block;
   vertical-align: top;
   padding: 0.5rem 1rem 1rem;
-  width: 60%;
+  width: 70%;
 }
 .promo .btn-wrapper {
-  padding: 1rem 0 0.5rem;
+  padding: 2rem 0 0.5rem;
 }
 .promo .btn {
   padding: 10px 45px;
@@ -1091,12 +1097,12 @@ input:focus::-webkit-input-placeholder {
   font-weight: bold;
   text-align: center;
   background: #fc4c02;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.82);
+  box-shadow: 0 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   box-sizing: border-box;
   color: white;
   font-size: 20px;
-  padding: 13px 55px;
+  padding: 13px 65px;
   transition: color 0.1s linear 0s, background-color 0.1s linear 0s, border-color 0.1s linear 0s;
 }
 .strava .btn-strava:hover {
