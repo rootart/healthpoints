@@ -1,8 +1,12 @@
 //color: #979b91;
+//color: rgb(52, 152, 219);
+//color: rgb(52, 152, 219);
+
+ //background: none repeat scroll 0 0 #10bbf1;
 
 .main-headder {
   background: #fff;
-  //color: rgb(52, 152, 219);
+
 
   .main-title {
     font-family: "AvenirHeavy",'Helvetica',Arial,sans-serif;
@@ -11,7 +15,7 @@
     padding: 0 0 2.5rem 0;
     text-transform: uppercase;
 
-    //color: rgb(52, 152, 219);
+
     color: #a7a0a2;
   }
 }
@@ -32,13 +36,13 @@
    //-ms-filter: blur(1px);
    //filter: blur(1px);
 
-  height: 445px;
+  height: 485px;
   position: relative;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   text-align: left;
 
   .main-title {
-    margin: 1.5rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;
     //font-size: 20px;
     font-size: 60px;
         font-weight: 500;
@@ -122,7 +126,7 @@
   //background: rgb(52, 152, 219);
   //background: #7FDBFF;
   //background: none repeat scroll 0 0 #ddd;
-  //background: none repeat scroll 0 0 #10bbf1;
+
 
 
 }
@@ -381,6 +385,7 @@
       color: #e0393e;
       font-size: 2rem;
       height: auto;
+      text-shadow: 1px 1px 1px #222;
     }
   }
   .title {
@@ -431,7 +436,7 @@
   .btn-evernote {
     text-align: right;
   }
-  .brick-large-3 {
+  .brick-large-5 {
     &:last-child {
       text-align: right;
     }
@@ -457,6 +462,7 @@
       color: #a7a0a2;
        font-size: 1.35rem;
        height: auto;
+       text-shadow: 1px 1px 1px #222;
     }
     .num {
       font-weight: bold;
@@ -464,7 +470,7 @@
     }
   }
   .num-comments {
-    margin-right: .5rem;
+    margin-right: 2rem;
     display: inline-block;
     vertical-align: middle;
     .typcn-message {
@@ -472,6 +478,7 @@
         color: #a7a0a2;
          font-size: 1.35rem;
           height: auto;
+          text-shadow: 1px 1px 1px #000;
       }
     }
     .num {
@@ -499,12 +506,118 @@
   .btn-ev {
     display: inline-block;
     vertical-align: middle;
-	  @include icons-sprite(evernote);
-	  width: icons-sprite-width(evernote);
-	  height: icons-sprite-height(evernote);
+    width: 30px;
+    height: 30px;
+    position: relative;
+    background-image: url('../images/icons/evernote.png');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    /*&:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '';
+  	  //@include icons-sprite(evernote);
+  	  //width: icons-sprite-width(evernote);
+  	  //height: icons-sprite-height(evernote);
 
+    }*/
+  }
+}
+.btn-f-link {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .5rem;
+  //background: #3b5998;
+  border: 2px solid #3b5998;
+  border-radius: 5px;
+  padding: .1rem .4rem .2rem;
+  span {
+    //color: #fff;
+    color: #3b5998;
+  }
+  .typcn-social-facebook {
+    &:before {
+      //color: #fff;
+      color: #3b5998;
+      font-size: 1.35rem;
+       //height: auto;
+       line-height: 1.1;
+          // width: 1.5rem;
+    }
+  }
+}
+.btn-f-share {
+  display: inline-block;
+  vertical-align: middle;
+  background: #3b5998;
+  border: 2px solid #3b5998;
+  border-radius: 5px;
+  padding: .1rem .4rem .2rem;
+  span {
+    color: #fff;
+  }
+  .typcn-social-facebook {
+    &:before {
+      color: #fff;
+      font-size: 1.35rem;
+       //height: auto;
+       line-height: 1.1;
+          // width: 1.5rem;
+    }
+  }
+}
+.btn-ev-link {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .5rem;
+  //background: #3b5998;
+  border: 2px solid #1fbc59;
+  border-radius: 5px;
+  padding: .1rem .4rem .2rem .4rem;
+  position: relative;
+  &:before {
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    content: '';
+	  @include icons-sprite(evernote-icon);
+	  width: icons-sprite-width(evernote-icon);
+	  height: icons-sprite-height(evernote-icon);
+  }
+  span {
+    //color: #fff;
+    color: #1fbc59;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 .4rem 0 30px;
   }
 
+}
+.btn-ev-share {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .5rem;
+  //background: #3b5998;
+  border: 2px solid #1fbc59;
+  border-radius: 5px;
+  padding: .1rem .4rem .2rem .4rem;
+  position: relative;
+  &:before {
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    content: '';
+	  @include icons-sprite(evernote-icon);
+	  width: icons-sprite-width(evernote-icon);
+	  height: icons-sprite-height(evernote-icon);
+  }
+  span {
+    color: #1fbc59;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 .4rem 0 30px;
+  }
 }
 .btn-evernote {
   background: none repeat scroll 0 0 #20c05c;
@@ -535,7 +648,7 @@
   text-align: center;
   .typcn {
     &:before {
-      font-size: 2.5rem;
+      font-size: 2rem;
       //font-weight: bold;
     }
   }
@@ -550,6 +663,8 @@
     }
   }
   .title {
+    display: inline-block;
+    vertical-align: middle;
     margin: 0 0 1rem 0;
     font-size: 24px;
         font-weight: bold;
@@ -557,6 +672,8 @@
   }
   .icon-title {
     //margin: 0 0 1rem 0;
+    display: inline-block;
+    vertical-align: middle;
   }
   .desc {
     font-size: 16px;
@@ -567,6 +684,9 @@
 }
 
 .strava {
+  background: rgba(#ddd,.5);
+  padding: 1.25rem 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   text-align: center;
   .text {
     display: inline-block;
@@ -589,7 +709,7 @@
         color: white;
         font-size: 20px;
 
-        padding: 10px 45px;
+        padding: 13px 55px;
         transition: color 0.1s linear 0s, background-color 0.1s linear 0s, border-color 0.1s linear 0s;
         &:hover {
           background: #fc4c02;
