@@ -87,6 +87,7 @@ LOCALE_PATHS = (
 
 PROJECT_APPS = (
     'profiles',
+    'tracks'
 )
 
 INSTALLED_APPS = (
@@ -97,6 +98,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.gis',
     'django_extensions',
     'south',
     'social.apps.django_app.default',
@@ -147,5 +149,14 @@ SOCIAL_AUTH_EVERNOTE_SECRET = ''
 SOCIAL_AUTH_STRAVA_KEY = ''
 SOCIAL_AUTH_STRAVA_SECRET = ''
 
+MAPBOX_API_ENDPOINT = 'http://api.tiles.mapbox.com/v4'
+MAPBOX_API_TOKEN = ''
+MAPBOX_MAP_ID = ''
+
 
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+
+try:
+    from settings_local import *
+except ImportError:
+    pass

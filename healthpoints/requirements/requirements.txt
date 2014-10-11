@@ -14,3 +14,7 @@ sorl-thumbnail
 python-social-auth
 geopy
 Fiona
+
+django-timedeltafield
+stravalib
+django-braces

@@ -10,8 +10,8 @@ class StravaOAuth2(BaseOAuth2):
     AUTHORIZATION_URL = 'https://www.strava.com/oauth/authorize'
     ACCESS_TOKEN_URL = 'https://www.strava.com/oauth/token'
     SCOPE_SEPARATOR = ' '
-    DEFAULT_SCOPE = ['write']
-    STATE_PARAMETER = 'racelist-state'
+    DEFAULT_SCOPE = ['write', 'view_private']
+    STATE_PARAMETER = 'healthpoints-state'
     ACCESS_TOKEN_METHOD = 'POST'
     REDIRECT_STATE = False
     EXTRA_DATA = [
