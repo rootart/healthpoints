@@ -1186,8 +1186,9 @@ input:focus::-webkit-input-placeholder {
   font-family: "AvenirHeavy";
 }
 .project-description .desc {
-  padding: 0 0 1rem 0;
+  padding: 1rem 0 1rem 0;
   width: 80%;
+  margin: auto;
   color: #a7a0a2;
   font-size: 20px;
   line-height: 1.4;
