@@ -9,7 +9,7 @@ class ActivityFBActionAdminInline(admin.StackedInline):
 
 
 class ActivityAdmin(admin.GeoModelAdmin):
-    list_display = ('__unicode__', 'fb_id')
+    list_display = ('__unicode__', 'fb_id', 'note_url')
     inlines = [ActivityFBActionAdminInline,]
 
 

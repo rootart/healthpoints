@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 
 from braces import views
 
@@ -22,5 +22,57 @@ class MainView(TemplateView):
 
 
         return context
+
+
+class ShareFBView(
+    views.CsrfExemptMixin, views.AjaxResponseMixin, views.LoginRequiredMixin,
+    views.JSONRequestResponseMixin, View):
+    '''
+    Share activity to facebook
+    '''
+    def post_ajax(self, request, *args, **kwargs):
+        activity_id = int(request.POST.get('id'))
+        try:
+            activity = Activity.objects.get(
+                id=activity_id,
+                user =  request.user
+            )
+        except Activity.DoesNotExist:
+            data = {
+                'status': False,
+                'msg': 'Activity is either missing or you do not have permissions'
+            }
+        else:
+            data = {
+                'status': True,
+                'link': activity.fb_post_activity()
+            }
+        return self.render_json_response(data)
+
+
+class ShareEvernoteView(
+    views.CsrfExemptMixin, views.AjaxResponseMixin, views.LoginRequiredMixin,
+    views.JSONRequestResponseMixin, View):
+    '''
+    Share activity to facebook
+    '''
+    def post_ajax(self, request, *args, **kwargs):
+        activity_id = int(request.POST.get('id'))
+        try:
+            activity = Activity.objects.get(
+                id=activity_id,
+                user = request.user
+            )
+        except Activity.DoesNotExist:
+            data = {
+                'status': False,
+                'msg': 'Activity is either missing or you do not have permissions'
+            }
+        else:
+            data = {
+                'status': True,
+                'link': activity.evenote_publish_note()
+            }
+        return self.render_json_response(data)
 
 

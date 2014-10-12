@@ -136,7 +136,7 @@ AUTHENTICATION_BACKENDS = (
     'profiles.backends.StravaOAuth2'
 )
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'publish_actions']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'publish_actions', 'publish_stream']
 
 SOCIAL_AUTH_FACEBOOK_KEY = ''
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
@@ -144,6 +144,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = ''
 
 SOCIAL_AUTH_EVERNOTE_KEY = ''
 SOCIAL_AUTH_EVERNOTE_SECRET = ''
+NOTEBOOK_NAME = 'HealthPoints'
 
 
 SOCIAL_AUTH_STRAVA_KEY = ''

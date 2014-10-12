@@ -1,5 +1,3 @@
-'use strict';
-
 $(function () {
   /*$("#slider-level").slider({
     value: 0,
@@ -23,4 +21,36 @@ $(function () {
  $( "#level-definition" ).change(function() {
    slider.slider( "value", this.selectedIndex );
  });
+
+
+  $('.btn-f-share').click(function(event){
+    var _this = $(this);
+
+    var request = $.ajax({
+      url: '/share/fb/',
+      type: 'POST',
+      data: 'id='+_this.attr('data-id')
+    })
+    request.done(function(data){
+      _this.removeClass('btn-f-share')
+          .addClass('btn-f-link')
+          .attr('target', '_blank')
+          .attr('href', '#');
+    });
+  });
+
+  $('.btn-ev-share').click(function(event){
+    var _this = $(this);
+
+    var request = $.ajax({
+      url: '/share/evernote/',
+      type: 'POST',
+      data: 'id='+_this.attr('data-id')
+    })
+    request.done(function(data){
+      window.open(data.link);
+    });
+  });
+
 });
+

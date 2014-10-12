@@ -1,3 +1,9 @@
+import hashlib
+import binascii
+import timedelta
+import json
+import cStringIO
+
 from django.contrib.gis.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -7,11 +13,18 @@ from django.core.exceptions import ImproperlyConfigured
 from django.contrib.gis.measure import D
 from django.db.models import Count, Min, Sum, Avg
 
-import timedelta
-import json
-
 import facebook
 from social.apps.django_app.default.models import UserSocialAuth
+from evernote.api.client import EvernoteClient
+import evernote.edam.type.ttypes as Types
+import evernote.edam.userstore.constants as UserStoreConstants
+from evernote.edam.error.ttypes import EDAMUserException
+from evernote.edam.error.ttypes import EDAMSystemException
+from evernote.edam.error.ttypes import EDAMNotFoundException
+
+import requests
+from PIL import Image
+
 
 from tracks.polyline import encode_coords
 
@@ -45,6 +58,7 @@ class Activity(models.Model):
     # shard_id + note_id for evernote
     shard_id = models.CharField(max_length=255, blank=True, null=True)
     note_id = models.CharField(max_length=255, blank=True, null=True)
+    note_url = models.CharField(max_length=255, blank=True, null=True)
 
     # fb id
     fb_id = models.CharField(max_length=255, db_index=True, blank=True, null=True)
@@ -77,7 +91,7 @@ class Activity(models.Model):
             return None
 
         # simplify geometry
-        coords = self.route.simplify(0.0001).coords[0:60]
+        coords = self.route.simplify(0.0001).coords
 
         # styling gejson
 
@@ -97,6 +111,105 @@ class Activity(models.Model):
         }
         return url
 
+    def evenote_publish_note(self):
+        '''
+        Publish note into evernote cloud to `HealthPoints` notebooks
+        :return:
+        '''
+        assert self.user.social_auth.filter(provider='evernote-sandbox').count() == 1
+
+        NOTEBOOK_NAME = getattr(settings, 'NOTEBOOK_NAME', 'HealthPoints')
+
+        try:
+            token = self.user.social_auth.get(provider='evernote-sandbox').tokens['oauth_token']
+            client = EvernoteClient(token=token)
+        except EDAMUserException as e:
+
+            print "Error attempting to authenticate to Evernote: %s" % e.parameter
+            return False
+        except EDAMSystemException as e:
+            print "Error attempting to authenticate to Evernote: %s" % e.message
+            return False
+
+
+        # get user store object
+        userStore = client.get_user_store()
+        user = userStore.getUser()
+
+        # fetch list of existing notes
+        noteStore = client.get_note_store()
+        notebooks = noteStore.listNotebooks()
+
+        # create new object if doesn't exists
+        notebooks = {n.name:n for n in notebooks}
+        if NOTEBOOK_NAME not in notebooks:
+            notebook = Types.Notebook()
+            notebook.name = NOTEBOOK_NAME
+            notebook = noteStore.createNotebook(notebook)
+        else:
+            notebook = notebooks[NOTEBOOK_NAME]
+
+        notebookGuid = notebook.guid
+
+        activityNote = Types.Note()
+        activityNote.title = u"{} - {}".format(self.location, self.start_date)
+
+        info = "Place: %s " \
+               "Date: %s " \
+               "Distance: %s" % (
+            self.location, self.start_date, self.formated_distance
+        )
+
+
+        activityNote.notebookGuid = notebookGuid
+
+        _file = cStringIO.StringIO(requests.get(self.get_mapbox_static_image()).content)
+        image = _file.read()
+        md5 = hashlib.md5()
+        md5.update(image)
+        hash = md5.digest()
+
+        data = Types.Data()
+        data.size = len(image)
+        data.bodyHash = hash
+        data.body = image
+
+        resource = Types.Resource()
+        resource.mime = 'image/png'
+        resource.data = data
+
+        hash_hex = binascii.hexlify(hash)
+
+
+        body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+        body += "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"
+        body += "<en-note>%s" % info
+        body += '<en-media type="image/png" hash="' + hash_hex + '"/>'
+        body += "</en-note>"
+        activityNote.content = body
+
+        activityNote.resources = [resource]
+
+        activityNote = noteStore.createNote(activityNote)
+
+        noteKey = noteStore.shareNote(activityNote.guid)
+
+
+        url = "https://sandbox.evernote.com/shard/%(shardID)s/sh/%(noteGuid)s/%(noteKey)s" % {
+            'shardID': user.shardId,
+            'noteGuid': activityNote.guid,
+            'noteKey': noteKey
+        }
+
+        self.shard_id = user.shardId,
+        self.note_id = noteKey,
+        self.note_url = url
+        self.save()
+        return url
+
+
+
+
     def fb_post_activity(self):
         '''
         Post FB activity
@@ -105,7 +218,6 @@ class Activity(models.Model):
         token = self.user.social_auth.get(provider='facebook').tokens
 
         api = facebook.GraphAPI(token)
-
 
         resp = api.put_wall_post(
             self.metrics_msg,

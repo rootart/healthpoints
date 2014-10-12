@@ -318,19 +318,19 @@
                     <span>{% trans "link" %}</span>
                   </a>
                 {% else %}
-                  <a href="#" class="btn-f-share">
+                  <a href="javascript:;" data-id="{{ activity.id }}" class="btn-f-share">
                     <span class="typcn typcn-social-facebook"></span>
                     <span>{% trans "share" %}</span>
                   </a>
                 {% endif %}
 
                   {% if activity.note_id %}
-                    <a href="#" class="btn-ev-link">
-                      <span>share</span>
+                    <a href="{{ activity.note_url }}" target="_blank"  class="btn-ev-link">
+                      <span>{% trans "link" %}</span>
                     </a>
                   {% else %}
-                    <a href="#" class="btn-ev-share">
-                      <span>share</span>
+                    <a data-id="{{ activity.id }}" href="javascript:;" class="btn-ev-share">
+                      <span>{% trans "share" %}</span>
                     </a>
                   {% endif %}
                 </div>
