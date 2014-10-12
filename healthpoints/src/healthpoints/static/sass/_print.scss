@@ -1,3 +1,41 @@
-/* Welcome to Compass. Use this file to define print styles.
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+@media print {
+
+  body {
+    background: white;
+  }
+
+  a[href^="http://"]:after,
+  a[href^="ftp://"]:after {
+    content: " (" attr(href) ")";
+    color: blue;
+    font-size: small;
+  }
+
+  @page {
+     margin: 2cm;
+  }
+  @page:first {
+    margin-top: 10cm;
+  }
+  @page:left {
+    margin-left: 3cm;
+    margin-right: 2cm;
+  }
+  @page:right {
+    margin-left: 2cm;
+    margin-right: 3cm;
+  }
+  p {
+    page-break-inside: avoid;
+  }
+}
+
+@media print body {
+  font-family: serif;
+	font-size: 1em;
+	color: #333;
+	margin-top: 2cm;
+	margin-right: 2cm;
+	margin-bottom: 1.5cm;
+	margin-left: 2cm
+}
