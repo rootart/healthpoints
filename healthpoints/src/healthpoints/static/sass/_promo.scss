@@ -20,6 +20,10 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   text-align: left;
 
+  .fb-item {
+    padding: 0.5rem 0 1rem;
+  }
+
   .main-title {
     display: inline-block;
     vertical-align: top;
@@ -811,6 +815,25 @@
         font-size: 20px;
         //font-weight: bold;
         line-height: 1.4;
+  }
+}
+
+.demo {
+    text-align: center;
+  .title {
+    a {
+      display: block;
+      padding: 0 0 1rem 0;
+      font-size: 40px;
+      line-height: 1.2;
+          //font-weight: 500;
+      //font-family: "AvenirHeavy";
+      color: #10bbf1;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }
 

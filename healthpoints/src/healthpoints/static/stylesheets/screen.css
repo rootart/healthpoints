@@ -502,6 +502,9 @@ input:focus::-webkit-input-placeholder {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   text-align: left;
 }
+.promo .fb-item {
+  padding: 0.5rem 0 1rem;
+}
 .promo .main-title {
   display: inline-block;
   vertical-align: top;
@@ -1192,6 +1195,21 @@ input:focus::-webkit-input-placeholder {
   color: #a7a0a2;
   font-size: 20px;
   line-height: 1.4;
+}
+
+.demo {
+  text-align: center;
+}
+.demo .title a {
+  display: block;
+  padding: 0 0 1rem 0;
+  font-size: 40px;
+  line-height: 1.2;
+  color: #10bbf1;
+  text-decoration: underline;
+}
+.demo .title a:hover {
+  text-decoration: none;
 }
 
 .strava {
