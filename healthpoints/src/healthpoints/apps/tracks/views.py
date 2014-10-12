@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, View
 
 from braces import views
 
-from tracks.models import Activity
+from tracks.models import Activity, ActivityFBActions
 
 
 class MainView(TemplateView):
@@ -19,6 +19,11 @@ class MainView(TemplateView):
             ).select_related('activityfbactions')
             context['stats'] = Activity.user_stats(self.request.user)
         context['activities'] = activities
+
+        support_team = ActivityFBActions.objects.filter(activity__user=user).distinct('user_fb_id')
+        context['support_team'] = support_team
+
+        context['health_points'] = Activity.get_health_points(user)
 
 
         return context

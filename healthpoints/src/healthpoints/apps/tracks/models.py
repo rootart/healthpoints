@@ -76,6 +76,24 @@ class Activity(models.Model):
             self.distance, self.moving_time, self.total_elevation_gain
         )
 
+    @classmethod
+    def get_health_points(cls, user):
+        '''
+        1 like = 1HP
+        1 comment = 2HP
+        10km distance = 1HP
+        :param user:
+        :return:
+        '''
+        likes = ActivityFBActions.objects.filter(activity__user=user, activity_type=ActivityFBActions.LIKE).count()
+        comments = ActivityFBActions.objects.filter(activity__user=user, activity_type=ActivityFBActions.COMMENT).count()
+
+        activities = cls.objects.filter(user=user)
+        total_distance = D(m=activities.aggregate(total_distance = Sum('distance'))['total_distance'] or 0).km
+
+        return likes + comments * 2 + int(total_distance) / 10
+
+
     def get_mapbox_static_image(self):
         '''
         https://www.mapbox.com/developers/api/static/
@@ -261,7 +279,6 @@ class Activity(models.Model):
             activity__user=user,
             activity_type=ActivityFBActions.LIKE
             ).count()
-
         return {
             'total_distance': total_distance,
             'total_activities': activities.count(),

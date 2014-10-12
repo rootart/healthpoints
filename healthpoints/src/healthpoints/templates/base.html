@@ -154,8 +154,8 @@
                       <div class="brick-large-8 brick-medium-8 brick-small-12 brick-columns">
                         <div class="health-point">
 
-                          <h3 class="title">Your HealthPoints <span class="typcn typcn-heart-outline"></span> is</h3>
-                          <span class="num">199</span>
+                          <h3 class="title">You have <span class="num">{{ health_points }}</span> <span class="typcn typcn-heart-outline"></span> HealthPoints </h3>
+
                         </div>
                         <div class="brick-row">
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
@@ -175,7 +175,7 @@
                             <div class="data2">{% trans "calories" %}</div>
                           </div>
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
-                            <div class="data1">{{ stats.total_moving_time }}</div>
+                            <div class="data1">>{{ stats.total_moving_time.days }} {% trans "days" %}</div>
                             <div class="data2">{% trans "moving time" %}</div>
                           </div>
                           <div class="brick-large-4 brick-medium-4 brick-small-6 brick-columns">
@@ -201,52 +201,26 @@
         <div class="panel-box">
 
           <div class="brick-row">
-            <h3 class="title"><span class="typcn typcn-group"></span>There are people who supports you</h3>
+            <h3 class="title"><span class="typcn typcn-group"></span>{% trans "These are people who supported you" %}</h3>
+            {% for member in support_team %}
                <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
+
                  <div class="item">
                      <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
                        <a class="support-team-photo" href="#">
-                         <img alt="" src="upload/vasyl.png">
+                         <img alt="" src="{{ member.user_picture_url }}">
                          <div class="circle"></div>
                         </a>
-                        <div class="first-name">Vasyl Dizhak</div>
+                        <div class="first-name">{{ member.username }}</div>
                       </div>
                       <div class="brick-large-8 brick-medium-8 brick-small-12 brick-columns">
-                        <div class="comment-title">Last comment <span class="typcn typcn-messages"></span></div>
-                        <p class="comment-desc">It's a really cool.</p>
+                        <div class="comment-title">{{ member.get_activity_type_display }} <span class="typcn typcn-messages"></span></div>
+                        <p class="comment-desc">{{ member.comment|default:"" }}</p>
                        </div>
                  </div>
                </div>
-               <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
-                   <div class="item">
-                       <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
-                         <a class="support-team-photo" href="#">
-                           <img alt="" src="upload/vasyl.png">
-                           <div class="circle"></div>
-                          </a>
-                          <div class="first-name">Vasyl Dizhak</div>
-                        </div>
-                        <div class="brick-large-8 brick-medium-8 brick-small-12 brick-columns">
-                          <div class="comment-title">Last comment <span class="typcn typcn-messages"></span></div>
-                          <p class="comment-desc">I want to run with you</p>
-                         </div>
-                   </div>
-               </div>
-               <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
-                   <div class="item">
-                       <div class="brick-large-4 brick-medium-4 brick-small-12 brick-columns">
-                         <a class="support-team-photo" href="#">
-                           <img alt="" src="upload/vasyl.png">
-                           <div class="circle"></div>
-                          </a>
-                            <div class="first-name">Vasyl Dizhak</div>
-                        </div>
-                        <div class="brick-large-8 brick-medium-8 brick-small-12 brick-columns">
-                          <div class="comment-title">Last comment <span class="typcn typcn-messages"></span></div>
-                          <p class="comment-desc">hm</p>
-                         </div>
-                   </div>
-               </div>
+            {% endfor %}
+
                <!--end comment list-->
             </div>
 

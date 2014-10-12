@@ -20,3 +20,5 @@ django-braces
 
 -e git+https://github.com/pythonforfacebook/facebook-sdk.git#egg=facebook
 evernote
+
+django-celery

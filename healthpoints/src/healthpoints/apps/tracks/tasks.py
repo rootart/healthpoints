@@ -87,7 +87,7 @@ def update_fb_actions():
             )
             if created:
                 action.username = like['name']
-                action.user_picture_url = graph.get_object('%s/picture' % like['id'])['url']
+                action.user_picture_url = graph.get_object('%s/picture?width=120&heigh=120' % like['id'])['url']
                 action.save()
 
 
@@ -104,7 +104,7 @@ def update_fb_actions():
                 action.username = comment['from']['name']
                 action.user_fb_id = comment['from']['id']
                 action.comment = comment['message']
-                action.user_picture_url = graph.get_object('%s/picture' % comment['from']['id'])['url']
+                action.user_picture_url = graph.get_object('%s/picture?width=120&heigh=120' % comment['from']['id'])['url']
                 action.save()
 
 
