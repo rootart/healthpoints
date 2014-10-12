@@ -520,8 +520,12 @@ input:focus::-webkit-input-placeholder {
   font-family: 'AvenirHeavy';
 }
 .promo .main-title em {
-  color: #3b5998;
-  text-shadow: 0px 0px 2px white;
+  background: url("../upload/facebook-like.png") left top no-repeat;
+  display: inline-block;
+  height: 50px;
+  margin-top: 2px;
+  vertical-align: top;
+  width: 58px;
 }
 .promo .main-subtitle {
   color: #fff;
