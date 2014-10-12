@@ -1399,6 +1399,15 @@ input:focus::-webkit-input-placeholder {
   }
 }
 
+@media only screen and (max-width: 480px) {
+  .goals .brick-columns {
+    padding-bottom: 2rem;
+  }
+
+  .metrics-data .health-point .brick-columns {
+    border: 0 !important;
+  }
+}
 /* Welcome to Compass. Use this file to write IE specific override styles.
  * Import this file using the following HTML or equivalent:
  * <!--[if IE]>

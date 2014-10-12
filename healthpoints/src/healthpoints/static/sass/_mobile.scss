@@ -1,0 +1,22 @@
+@media only screen and (max-width: 480px) {
+  .goals {
+    //background: red;
+    .brick-columns {
+      padding-bottom: 2rem;
+    }
+  }
+
+  .metrics-data {
+    .health-point {
+      .brick-columns {
+        border: 0 !important;
+      }
+    }
+  }
+
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}
