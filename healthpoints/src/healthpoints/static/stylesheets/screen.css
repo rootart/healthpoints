@@ -1080,7 +1080,6 @@ input:focus::-webkit-input-placeholder {
 
 .goals {
   padding: 1rem 0;
-  text-align: center;
   /*.typcn-location-outline  {
     &:before {
       color:#20c05c;
@@ -1099,6 +1098,9 @@ input:focus::-webkit-input-placeholder {
   text-shadow: 1px 1px 1px #222222;
   color: #a7a0a2;
 }
+.goals .brick-columns {
+  padding: 0;
+}
 .goals .title {
   display: inline-block;
   vertical-align: middle;
@@ -1112,9 +1114,9 @@ input:focus::-webkit-input-placeholder {
   vertical-align: middle;
 }
 .goals .desc {
-  font-size: 16px;
-  line-height: 1.3;
-  padding: 0 1rem 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 0 2rem 0 0;
   text-align: left;
 }
 
