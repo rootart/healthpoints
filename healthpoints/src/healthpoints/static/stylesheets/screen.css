@@ -598,6 +598,9 @@ input:focus::-webkit-input-placeholder {
 .second-name {
  color: #a7a0a2;
 }*/
+.profile {
+  padding: 0 0 2rem 0;
+}
 .profile .title {
   color: #a7a0a2;
   font-size: 28px;
@@ -1184,6 +1187,7 @@ input:focus::-webkit-input-placeholder {
 }
 .project-description .desc {
   padding: 0 0 1rem 0;
+  width: 80%;
   color: #a7a0a2;
   font-size: 20px;
   line-height: 1.4;
@@ -1397,6 +1401,61 @@ input:focus::-webkit-input-placeholder {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.hackzurich {
+  margin: 2rem 0 0 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+.hackzurich .item {
+  text-align: center;
+}
+.hackzurich .title {
+  font-family: "AvenirHeavy";
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.hackzurich span {
+  display: block;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.footer {
+  border: 4px solid rgba(0, 0, 0, 0.55);
+  background: url("../upload/bg-footer.jpg") no-repeat scroll 50% 50%/cover white;
+}
+.footer .panel-box {
+  padding: 0.5rem 1.25rem;
+}
+.footer .item {
+  text-align: right;
+}
+.footer .photo {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin-left: 1rem;
+}
+.footer .photo img {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #a7a0a2;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px 0 0;
+}
+.footer .photo .first-name {
+  display: inline-block;
+  vertical-align: middle;
+  color: #ccc;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s linear;
+}
+.footer .photo .first-name:hover {
+  border-bottom: 1px solid #cccccc;
 }
 
 @media only screen and (max-width: 480px) {
