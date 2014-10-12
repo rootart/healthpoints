@@ -1312,7 +1312,7 @@ input:focus::-webkit-input-placeholder {
 }
 .support-team .typcn-messages:before {
   font-size: 1.3rem;
-  margin-left: 0 0 0 0.2rem;
+  margin: 0 0 0 0.2rem;
 }
 .support-team .first-name {
   color: #10bbf1;
@@ -1331,9 +1331,6 @@ input:focus::-webkit-input-placeholder {
   line-height: 1.4;
   height: 73px;
   overflow: hidden;
-}
-.support-team .comment-desc:after {
-  content: "...";
 }
 
 .support-team-photo {

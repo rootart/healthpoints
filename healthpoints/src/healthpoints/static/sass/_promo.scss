@@ -943,7 +943,7 @@
   .typcn-messages {
     &:before {
       font-size: 1.3rem;
-      margin-left: 0 0 0 .2rem;
+      margin: 0 0 0 .2rem;
     }
   }
   .first-name {
@@ -963,10 +963,6 @@
      line-height: 1.4;
      height: 73px;
      overflow: hidden;
-     &:after {
-       content: '...'
-     }
-
   }
 }
 
