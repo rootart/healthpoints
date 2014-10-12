@@ -9,6 +9,10 @@ from braces import views
 from tracks.models import Activity, ActivityFBActions
 
 
+class DemoProfileView(TemplateView):
+    template_name = 'demo-profile.html'
+
+
 class MainView(TemplateView):
     template_name = "index.html"
 
