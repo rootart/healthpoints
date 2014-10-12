@@ -5,11 +5,12 @@ from django.views.generic import TemplateView
 
 admin.autodiscover()
 
-from tracks.views import MainView, ShareFBView, ShareEvernoteView
+from tracks.views import MainView, ShareFBView, ShareEvernoteView, LogoutView
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url('^$', MainView.as_view(), name='main'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'share/fb/$', ShareFBView.as_view(), name='share-fb'),
     url(r'share/evernote/$', ShareEvernoteView.as_view(), name='share-evernote'),
     url('', include('social.apps.django_app.urls', namespace='social')),

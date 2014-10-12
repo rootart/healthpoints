@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, RedirectView
+from django.http import HttpResponseRedirect
+from django.contrib.auth import logout
+from django.core.urlresolvers import reverse
 
 from braces import views
 
@@ -18,15 +21,21 @@ class MainView(TemplateView):
                 user=user
             ).select_related('activityfbactions')
             context['stats'] = Activity.user_stats(self.request.user)
+
+            support_team = ActivityFBActions.objects.filter(activity__user=user).distinct('user_fb_id')
+            context['support_team'] = support_team
+
+            context['health_points'] = Activity.get_health_points(user)
         context['activities'] = activities
-
-        support_team = ActivityFBActions.objects.filter(activity__user=user).distinct('user_fb_id')
-        context['support_team'] = support_team
-
-        context['health_points'] = Activity.get_health_points(user)
 
 
         return context
+
+
+class LogoutView(RedirectView):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect(reverse('main'))
 
 
 class ShareFBView(
