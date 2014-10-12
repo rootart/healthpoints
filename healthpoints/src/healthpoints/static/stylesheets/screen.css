@@ -1168,6 +1168,23 @@ input:focus::-webkit-input-placeholder {
   text-align: left;
 }
 
+.project-description {
+  text-align: center;
+}
+.project-description .title {
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 50px;
+  line-height: 1.2;
+  font-weight: 500;
+  font-family: "AvenirHeavy";
+}
+.project-description .desc {
+  padding: 0 0 1rem 0;
+  color: #a7a0a2;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
 .strava {
   background: rgba(221, 221, 221, 0.5);
   padding: 1.25rem 0;
