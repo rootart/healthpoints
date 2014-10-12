@@ -103,6 +103,7 @@ INSTALLED_APPS = (
     'south',
     'social.apps.django_app.default',
     'djcelery',
+    'kombu.transport.django'
 ) + PROJECT_APPS
 
 LOGGING = {
@@ -157,8 +158,7 @@ MAPBOX_MAP_ID = ''
 
 LOGIN_REDIRECT_URL = '/'
 
-BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-
+BROKER_URL = 'django://'
 try:
     from settings_local import *
 except ImportError:
